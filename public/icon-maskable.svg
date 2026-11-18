@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" fill="none">
+  <!-- Full-bleed dark background for Android maskable cropping -->
+  <rect width="512" height="512" fill="#09090B" />
+  <!-- Iconography kept strictly inside central 70% safe zone (15% padding on all sides) -->
+  <g transform="translate(256, 256) scale(0.72) translate(-256, -256)">
+    <path
+      d="M144 372V224C144 162.144 194.144 112 256 112C317.856 112 368 162.144 368 224V372C368 380.837 360.837 388 352 388H160C151.163 388 144 380.837 144 372Z"
+      stroke="#D4AF6A"
+      stroke-width="22"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M148 242L256 306L364 242"
+      stroke="#D4AF6A"
+      stroke-width="20"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M256 164V224M230 190H282"
+      stroke="#F3EFE6"
+      stroke-width="20"
+      stroke-linecap="round"
+    />
+  </g>
+</svg>

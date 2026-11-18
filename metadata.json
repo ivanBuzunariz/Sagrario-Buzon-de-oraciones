@@ -1,0 +1,6 @@
+{
+  "name": "Sagrario — Buzón de Oraciones",
+  "description": "Buzón privado de oraciones y peticiones a Dios con guardado local seguro, modo oscuro minimalista e instalable como PWA.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
