@@ -84,50 +84,49 @@ export const TopBar: React.FC<TopBarProps> = ({
         </div>
       </header>
 
-      {/* Mobile Compact Top Bar (56px) */}
-      <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-stone-200/80 bg-[#F8F6F1]/90 px-4 backdrop-blur-md md:hidden dark:border-zinc-800/80 dark:bg-[#09090B]/90">
-        <button
-          type="button"
-          onClick={() => onSelectView('buzon')}
-          className="font-serif-display text-2xl font-semibold tracking-tight text-stone-900 dark:text-[#F3EFE6] whitespace-nowrap shrink-0"
-        >
-          Sagrario
-        </button>
-
-        <div className="flex items-center gap-1">
+      {/* Mobile Compact Sticky Header + Top Tab Bar (92px total, leaves bottom clear of Netlify watermark) */}
+      <header className="sticky top-0 z-30 border-b border-stone-200/80 bg-[#F8F6F1]/95 backdrop-blur-md md:hidden dark:border-zinc-800/80 dark:bg-[#09090B]/95">
+        <div className="flex h-12 items-center justify-between px-4">
           <button
             type="button"
-            onClick={onToggleDiscreet}
-            aria-label={discreetMode ? 'Mostrar textos de oraciones' : 'Activar modo discreto'}
-            aria-pressed={discreetMode}
-            className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl text-stone-600 transition-colors hover:bg-stone-200/60 dark:text-zinc-300 dark:hover:bg-zinc-900"
+            onClick={() => onSelectView('buzon')}
+            className="font-serif-display text-2xl font-semibold tracking-tight text-stone-900 dark:text-[#F3EFE6] whitespace-nowrap shrink-0"
           >
-            {discreetMode ? (
-              <EyeOff className="h-5 w-5 text-[#9A7228] dark:text-[#D4AF6A]" aria-hidden="true" />
-            ) : (
-              <Eye className="h-5 w-5" aria-hidden="true" />
-            )}
+            Sagrario
           </button>
 
-          {hasPin && (
+          <div className="flex items-center gap-1">
             <button
               type="button"
-              onClick={onLockNow}
-              aria-label="Bloquear buzón ahora"
+              onClick={onToggleDiscreet}
+              aria-label={discreetMode ? 'Mostrar textos de oraciones' : 'Activar modo discreto'}
+              aria-pressed={discreetMode}
               className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl text-stone-600 transition-colors hover:bg-stone-200/60 dark:text-zinc-300 dark:hover:bg-zinc-900"
             >
-              <Lock className="h-5 w-5" aria-hidden="true" />
+              {discreetMode ? (
+                <EyeOff className="h-5 w-5 text-[#9A7228] dark:text-[#D4AF6A]" aria-hidden="true" />
+              ) : (
+                <Eye className="h-5 w-5" aria-hidden="true" />
+              )}
             </button>
-          )}
-        </div>
-      </header>
 
-      {/* Mobile Fixed Bottom Thumb Navigation (64px) */}
-      <nav
-        aria-label="Navegación inferior"
-        className="fixed bottom-0 left-0 right-0 z-30 border-t border-stone-200/80 bg-[#F8F6F1]/95 backdrop-blur-md pb-safe md:hidden dark:border-zinc-800/80 dark:bg-[#09090B]/95"
-      >
-        <div className="grid h-16 grid-cols-4 items-center">
+            {hasPin && (
+              <button
+                type="button"
+                onClick={onLockNow}
+                aria-label="Bloquear buzón ahora"
+                className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl text-stone-600 transition-colors hover:bg-stone-200/60 dark:text-zinc-300 dark:hover:bg-zinc-900"
+              >
+                <Lock className="h-5 w-5" aria-hidden="true" />
+              </button>
+            )}
+          </div>
+        </div>
+
+        <nav
+          aria-label="Navegación móvil"
+          className="grid h-11 grid-cols-4 items-center border-t border-stone-200/60 px-2 dark:border-zinc-800/60"
+        >
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isActive = activeView === item.id;
@@ -137,19 +136,25 @@ export const TopBar: React.FC<TopBarProps> = ({
                 type="button"
                 onClick={() => onSelectView(item.id)}
                 aria-current={isActive ? 'page' : undefined}
-                className={`flex min-h-[44px] flex-col items-center justify-center gap-1 text-[11px] font-medium transition-colors ${
+                className={`relative flex min-h-[44px] items-center justify-center gap-1.5 text-xs font-medium transition-colors whitespace-nowrap ${
                   isActive
                     ? 'text-[#9A7228] dark:text-[#D4AF6A]'
                     : 'text-stone-500 hover:text-stone-900 dark:text-zinc-400 dark:hover:text-zinc-200'
                 }`}
               >
-                <Icon className="h-5 w-5" aria-hidden="true" />
-                <span className="whitespace-nowrap">{item.label}</span>
+                <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />
+                <span>{item.label}</span>
+                {isActive && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-x-3 bottom-0 h-[2px] bg-[#9A7228] dark:bg-[#D4AF6A]"
+                  />
+                )}
               </button>
             );
           })}
-        </div>
-      </nav>
+        </nav>
+      </header>
     </>
   );
 };
