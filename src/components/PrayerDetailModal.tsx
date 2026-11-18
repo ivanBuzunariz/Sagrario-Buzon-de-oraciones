@@ -72,12 +72,12 @@ export const PrayerDetailModal: React.FC<PrayerDetailModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 pb-16 backdrop-blur-sm sm:pb-4"
+      className="fixed inset-0 z-50 flex items-end justify-center bg-black/75 p-0 backdrop-blur-sm sm:items-center sm:p-4"
       role="dialog"
       aria-modal="true"
       aria-labelledby="detail-modal-title"
     >
-      <div className="max-h-[82vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-stone-200 bg-white p-6 shadow-2xl sm:max-h-[90vh] sm:p-8 dark:border-zinc-800 dark:bg-[#111114]">
+      <div className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-t-3xl border border-stone-200 bg-white p-6 shadow-2xl sm:rounded-2xl sm:p-8 dark:border-zinc-800 dark:bg-[#111114]">
         {/* Header metadata & close */}
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
